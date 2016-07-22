@@ -58,7 +58,7 @@ abstract class AbstractBaseReporter implements ReporterInterface
         'white' => ['left' => "\033[37m", 'right' => "\033[39m"],
         'success' => ['left' => "\033[32m", 'right' => "\033[39m"],
         'error' => ['left' => "\033[31m", 'right' => "\033[39m"],
-        'muted' => ['left' => "\033[90m", 'right' => "\033[0m"],
+        'muted' => ['left' => "\033[91m", 'right' => "\033[0m"],
         'pending' => ['left' => "\033[36m", 'right' => "\033[39m"],
     );
 
