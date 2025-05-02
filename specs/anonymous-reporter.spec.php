@@ -5,27 +5,30 @@ use Peridot\Reporter\AnonymousReporter;
 use Peridot\Reporter\ReporterInterface;
 
 describe('AnonymousReporter', function() {
+    $eventEmitter = null;
+    $configuration = null;
+    $output = null;
 
-    beforeEach(function() {
-        $this->eventEmitter = new EventEmitter();
-        $this->configuration = new Configuration();
-        $this->output = new Symfony\Component\Console\Output\NullOutput();
+    beforeEach(function() use (&$eventEmitter, &$configuration, &$output) {
+        $eventEmitter = new EventEmitter();
+        $configuration = new Configuration();
+        $output = new Symfony\Component\Console\Output\NullOutput();
     });
 
-    it('should call the init function passed in', function() {
-        $configuration = null;
-        $runner = null;
-        $output = null;
-        $emitter = null;
-        new AnonymousReporter(function(ReporterInterface $reporter) use (&$configuration, &$output, &$emitter) {
-            $configuration = $reporter->getConfiguration();
-            $output = $reporter->getOutput();
-            $emitter = $reporter->getEventEmitter();
-        }, $this->configuration, $this->output, $this->eventEmitter);
+    it('should call the init function passed in', function() use (&$eventEmitter, &$configuration, &$output) {
+        $testConfiguration = null;
+        $testOutput = null;
+        $testEmitter = null;
+
+        new AnonymousReporter(function(ReporterInterface $reporter) use (&$testConfiguration, &$testOutput, &$testEmitter) {
+            $testConfiguration = $reporter->getConfiguration();
+            $testOutput = $reporter->getOutput();
+            $testEmitter = $reporter->getEventEmitter();
+        }, $configuration, $output, $eventEmitter);
+
         assert(
-            !is_null($configuration) && !is_null($output) && !is_null($emitter),
+            !is_null($testConfiguration) && !is_null($testOutput) && !is_null($testEmitter),
             'configuration, output, and emitter should not be null'
         );
     });
-
 });
