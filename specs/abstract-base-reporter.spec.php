@@ -26,13 +26,15 @@ describe('AbstractBaseReporter', function() {
 
     describe('->color()', function() {
         context('when in a windows environment', function() {
-            beforeEach(function() {
-                $this->ansicon = getenv('ANSICON');
+            $ansicon = "";
+
+            beforeEach(function() use (&$ansicon) {
+                $ansicon = getenv('ANSICON');
                 putenv('ANSICON=1');
             });
 
-            afterEach(function() {
-                putenv('ANSICON=' . $this->ansicon);
+            afterEach(function() use (&$ansicon) {
+                putenv('ANSICON=' . ($ansicon !== false ? $ansicon : ''));
             });
 
             it ('should add escape sequences if ansicon is enabled', function() {
