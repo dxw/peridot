@@ -1,6 +1,7 @@
 <?php
 namespace Peridot\Core;
 
+use Peridot\Reporter\ReporterInterface as PeridotReporterInterface;
 use Peridot\Scope\Scope as PeridotScope;
 
 /**
@@ -11,5 +12,6 @@ use Peridot\Scope\Scope as PeridotScope;
  */
 class Scope extends PeridotScope
 {
+    protected PeridotReporterInterface $reporter;
 
 }
