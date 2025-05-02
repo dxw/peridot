@@ -1,10 +1,8 @@
 <?php
 use Evenement\EventEmitter;
 use Peridot\Configuration;
-use Peridot\Core\Suite;
 use Peridot\Reporter\AnonymousReporter;
 use Peridot\Reporter\ReporterInterface;
-use Peridot\Runner\Runner;
 
 describe('AnonymousReporter', function() {
 
