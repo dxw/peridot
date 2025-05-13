@@ -10,6 +10,7 @@ use Peridot\Scope\Scope as PeridotScope;
  *
  * @package Peridot\Core
  */
+#[\AllowDynamicProperties]
 class Scope extends PeridotScope
 {
     protected PeridotReporterInterface $reporter;
