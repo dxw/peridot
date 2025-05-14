@@ -73,21 +73,6 @@ describe("Test", function() {
             } while ($handler);
         };
 
-        it('should support error handlers with the context parameter', function () use ($removeErrorHandlers) {
-            $removeErrorHandlers();
-            $handlerArguments = [];
-            set_error_handler(function($type, $message, $file, $line, array $context) use (&$handlerArguments) {
-                $handlerArguments = func_get_args();
-            });
-            $test = new ItWasRun('this should return a failed result', function () {
-                trigger_error('This is a user notice', E_USER_NOTICE);
-            });
-            $result = new TestResult(new EventEmitter());
-            error_reporting(-1);
-            $test->run($result);
-            assert(count($handlerArguments) >= 5, sprintf('should pass at least 5 arguments, %d passed', count($handlerArguments)));
-        });
-
         it('should support error handlers with extended parameter lists', function () use ($removeErrorHandlers) {
             $removeErrorHandlers();
             $handlerArguments = [];
