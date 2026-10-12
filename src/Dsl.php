@@ -154,9 +154,3 @@ function afterEach(callable $fn)
 {
     Context::getInstance()->addTearDownFunction($fn);
 }
-
-/**
- * Change default assert behavior to throw exceptions
- */
-assert_options(ASSERT_WARNING, false);
-assert_options(ASSERT_CALLBACK, ['Peridot\AssertException', 'handle']);
