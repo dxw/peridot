@@ -149,7 +149,7 @@ describe('Context', function() {
             $this->property = $this->reflection->getProperty('instance');
             $this->property->setAccessible(true);
             $this->previous = $this->property->getValue();
-            $this->property->setValue(null);
+            $this->property->setValue(null, null);
         });
 
         afterEach(function() {
